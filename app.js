@@ -36,9 +36,12 @@ while (round <= max && playerpoint < max/2 && comppoint < max/2) {
   var computer = generateCompMove();
   var player = getPlayerMove();
 
-  //Win state 1: player number > computer number. Ie, player is paper, computer is rock; player is scissors, computer is paper
   if (player > computer) {
-    playerpoint+=1;
+    if (player-computer===2){ //Lose state 1: player > computer, but the difference between them is 2. Ie, player is scissors, and computer is rock.
+      comppoint+=1;
+    } else { //Win state 1: player number > computer number, but the difference is 1. Ie, player is paper, computer is rock; player is scissors, computer is paper
+      playerpoint+=1;
+    }
   } else if (player==0 && computer==2){ //Win state 2: player is 0, and computer is 2. Ie, player is rock, computer is scissors
     playerpoint+=1;
   } else if (player==computer){ //Draw state: player and computer choose the same thing
