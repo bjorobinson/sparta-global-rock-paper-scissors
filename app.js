@@ -26,8 +26,6 @@ function generateCompMove() {
 
 
 //Game itself:
-//variable to check if player wins (1). Default to compuer winning (0). Draw is when no one wins (2).
-var win = 0;
 //Game stats:
 var max = 5;
 var playerpoint = 0;
@@ -48,6 +46,10 @@ while (round <= max && playerpoint < max/2 && comppoint < max/2) {
   } else { //Otherwise it is assumed computer won
     comppoint+=1;
   }
+  //ROUND ROUNDUP
+  console.log('ROUND: ' + round);
+  console.log('PLAYER SCORE: ' + playerpoint);
+  console.log('COMPUTER SCORE: ' + comppoint);
   round ++;
 }
 
