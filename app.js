@@ -32,7 +32,8 @@ var win = 0;
 var max = 5;
 var playerpoint = 0;
 var comppoint = 0;
-for (round=1; round <= max; round++) {
+var round=1;
+while (round <= max && playerpoint < max/2 && comppoint < max/2) {
   //Get Moves:
   var computer = generateCompMove();
   var player = getPlayerMove();
@@ -47,6 +48,14 @@ for (round=1; round <= max; round++) {
   } else { //Otherwise it is assumed computer won
     comppoint+=1;
   }
+  round ++;
 }
-console.log(playerpoint);
-console.log(comppoint);
+
+//It exits the loop, so game has ended through 1 of the 3 conditions failing
+if (playerpoint > comppoint) {
+  console.log("Player wins");
+} else if (comppoint > playerpoint) {
+  console.log("Computer wins");
+} else {
+  console.log("Draw!");
+}
