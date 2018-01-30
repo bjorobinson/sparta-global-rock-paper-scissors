@@ -21,7 +21,7 @@ function getPlayerMove() {
 
 //Generates number between 0 and 2 for computer move
 function generateCompMove() {
-  return var Math.floor(Math.random()*3);
+  return Math.floor(Math.random()*3);
 }
 
 
@@ -29,20 +29,24 @@ function generateCompMove() {
 //variable to check if player wins (1). Default to compuer winning (0). Draw is when no one wins (2).
 var win = 0;
 //Game stats:
-var round = 1;
 var max = 5;
 var playerpoint = 0;
 var comppoint = 0;
-//Get Moves:
-var computer = generateCompMove();
-var player = getPlayerMove();
-//Win state 1: player number > computer number. Ie, player is paper, computer is rock; player is scissors, computer is paper
-if (player > computer) {
-  playerpoint+=1;
-} else if (player==0 && computer==2){ //Win state 2: player is 0, and computer is 2. Ie, player is rock, computer is scissors
-  playerpoint+=1;
-} else if (player==computer){ //Draw state: player and computer choose the same thing
-  //Do nothing
-} else { //Otherwise it is assumed computer won
-  comppoint+=1;
+for (round=1; round <= max; round++) {
+  //Get Moves:
+  var computer = generateCompMove();
+  var player = getPlayerMove();
+
+  //Win state 1: player number > computer number. Ie, player is paper, computer is rock; player is scissors, computer is paper
+  if (player > computer) {
+    playerpoint+=1;
+  } else if (player==0 && computer==2){ //Win state 2: player is 0, and computer is 2. Ie, player is rock, computer is scissors
+    playerpoint+=1;
+  } else if (player==computer){ //Draw state: player and computer choose the same thing
+    //Do nothing
+  } else { //Otherwise it is assumed computer won
+    comppoint+=1;
+  }
 }
+console.log(playerpoint);
+console.log(comppoint);
