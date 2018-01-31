@@ -7,21 +7,28 @@ function getPlayerMove() {
   //scissors = 2
   switch (playerinput) {
     case 'rock':
-      return '0';
+      return 0;
       break;
     case 'paper':
-      return '1';
+      return 1;
       break;
     case 'scissors':
-      return '2';
+      return 2;
     default:
-      throw 'invalidInputError';
+      alert("Invalid input. Please enter: rock, paper, scissors, lowercase")
+      getPlayerMove();
   }
 }
 
 //Generates number between 0 and 2 for computer move
 function generateCompMove() {
   return Math.floor(Math.random()*3);
+}
+
+function roundRoundup(){
+  alert('ROUND: ' + round + '\n' +
+  'PLAYER SCORE: ' + playerpoint + '\n' +
+  'COMPUTER SCORE: ' + comppoint);
 }
 
 
@@ -50,17 +57,15 @@ while (round <= max && playerpoint < max/2 && comppoint < max/2) {
     comppoint+=1;
   }
   //ROUND ROUNDUP
-  console.log('ROUND: ' + round);
-  console.log('PLAYER SCORE: ' + playerpoint);
-  console.log('COMPUTER SCORE: ' + comppoint);
+  roundRoundup();
   round ++;
 }
 
 //It exits the loop, so game has ended through 1 of the 3 conditions failing
 if (playerpoint > comppoint) {
-  console.log("Player wins");
+  alert("Player wins");
 } else if (comppoint > playerpoint) {
-  console.log("Computer wins");
+  alert("Computer wins");
 } else {
-  console.log("Draw!");
+  alert("Draw!");
 }
